@@ -61,6 +61,24 @@ build CMakeFiles/AlgorithmComplexity.dir/halfQsort.c.obj: C_COMPILER__AlgorithmC
   OBJECT_DIR = CMakeFiles\AlgorithmComplexity.dir
   OBJECT_FILE_DIR = CMakeFiles\AlgorithmComplexity.dir
 
+build CMakeFiles/AlgorithmComplexity.dir/bubbleAndCounting.c.obj: C_COMPILER__AlgorithmComplexity_unscanned_Debug D$:/Development/Homeworks/AlgorithmComplexity/bubbleAndCounting.c || cmake_object_order_depends_target_AlgorithmComplexity
+  DEP_FILE = CMakeFiles\AlgorithmComplexity.dir\bubbleAndCounting.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\AlgorithmComplexity.dir
+  OBJECT_FILE_DIR = CMakeFiles\AlgorithmComplexity.dir
+
+build CMakeFiles/AlgorithmComplexity.dir/exponentiation.c.obj: C_COMPILER__AlgorithmComplexity_unscanned_Debug D$:/Development/Homeworks/AlgorithmComplexity/exponentiation.c || cmake_object_order_depends_target_AlgorithmComplexity
+  DEP_FILE = CMakeFiles\AlgorithmComplexity.dir\exponentiation.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\AlgorithmComplexity.dir
+  OBJECT_FILE_DIR = CMakeFiles\AlgorithmComplexity.dir
+
+build CMakeFiles/AlgorithmComplexity.dir/_fibonacciNumbers.c.obj: C_COMPILER__AlgorithmComplexity_unscanned_Debug D$:/Development/Homeworks/AlgorithmComplexity/$ fibonacciNumbers.c || cmake_object_order_depends_target_AlgorithmComplexity
+  DEP_FILE = CMakeFiles\AlgorithmComplexity.dir\_fibonacciNumbers.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\AlgorithmComplexity.dir
+  OBJECT_FILE_DIR = CMakeFiles\AlgorithmComplexity.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target AlgorithmComplexity
@@ -69,7 +87,7 @@ build CMakeFiles/AlgorithmComplexity.dir/halfQsort.c.obj: C_COMPILER__AlgorithmC
 #############################################
 # Link the executable AlgorithmComplexity.exe
 
-build AlgorithmComplexity.exe: C_EXECUTABLE_LINKER__AlgorithmComplexity_Debug CMakeFiles/AlgorithmComplexity.dir/main.c.obj CMakeFiles/AlgorithmComplexity.dir/halfQsort.c.obj
+build AlgorithmComplexity.exe: C_EXECUTABLE_LINKER__AlgorithmComplexity_Debug CMakeFiles/AlgorithmComplexity.dir/main.c.obj CMakeFiles/AlgorithmComplexity.dir/halfQsort.c.obj CMakeFiles/AlgorithmComplexity.dir/bubbleAndCounting.c.obj CMakeFiles/AlgorithmComplexity.dir/exponentiation.c.obj CMakeFiles/AlgorithmComplexity.dir/_fibonacciNumbers.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\AlgorithmComplexity.dir

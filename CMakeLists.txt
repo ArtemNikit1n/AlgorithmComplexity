@@ -7,4 +7,7 @@ add_executable(AlgorithmComplexity main.c
         halfQsort.c
         headerFile.h
         main.c
+        bubbleAndCounting.c
+        exponentiation.c
+        " fibonacciNumbers.c"
 )
