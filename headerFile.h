@@ -3,4 +3,6 @@
 
 #endif //ALGORITHMCOMPLEXITY_HEADER_H
 
-int Sum(int a, int b);
+void Exponentiation();
+
+long ExponentiationLogTime(int baseOfDegree, int exponent);

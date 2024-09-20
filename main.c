@@ -1,38 +1,44 @@
 #include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
 #include "headerFile.h"
 
-//int Fib(int n, int *errorCode)
-//{
-//    // **
-//
-//
-//
-//    // 1
-//
-//    int *tmp = (int*) calloc(n, sizeof(int));
-//    for (size_t i = 2; i < n; ++i) {
-//        tmp[i] = tmp[i - 1] + tmp[i - 2];
-//    }
-//
-//    // 2
-//
-//    if (n == 0 || n == 1) {
-//        *errorCode = 0;
-//        return 1;
-//    }
-//    if (n < 0) {
-//        *errorCode = 1;
-//        return 0;
-//    }
-//    return Fib(n - 1) + Fib(n - 2);
-//}
+void StartingTask(char taskNumber) {
+    if (taskNumber == '1') {
+        printf("Not ready");
+    }
+    if (taskNumber == '2') {
+        printf("Not ready");
+    }
+    if (taskNumber == '3') {
+        Exponentiation();
+    }
+    if (taskNumber == '4') {
+        printf("Not ready");
+    }
+}
 
-int main(void) {
-//    printf("%d", Fib(3));
-    int a = 4;
-    int b = 5;
-    int c;
+bool TestInputCorrectnessForMain(const char *taskNumber) {
+    size_t lengthTaskNumber = strlen(taskNumber);
+    if (*taskNumber == '0') {
+        return 1;
+    }
+    if (strlen(taskNumber) > 1) {
+        return 1;
+    }
+    return 0;
+}
 
-    c = a + b;
-    printf("%d", Sum(3, 5));
+int main() {
+    char taskNumber = '0';
+    printf("Enter the task number from 1 to 4:\n");
+    scanf("%[1234]", &taskNumber);
+
+    if (TestInputCorrectnessForMain(&taskNumber)) {
+        printf("Input error");
+        return 1;
+    }
+
+    StartingTask(taskNumber);
+    return 0;
 }
