@@ -6,4 +6,5 @@ set(CMAKE_C_STANDARD 11)
 add_executable(AlgorithmComplexity main.c
         halfQsort.c
         headerFile.h
+        main.c
 )
