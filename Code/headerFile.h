@@ -3,6 +3,8 @@
 
 #endif //ALGORITHMCOMPLEXITY_HEADER_H
 
-void Exponentiation();
+void HalfQsortTask(); // 1
+
+void ExponentiationTask(); // 3
 
 long ExponentiationLogTime(int baseOfDegree, int exponent);

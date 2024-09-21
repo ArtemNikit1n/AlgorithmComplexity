@@ -5,13 +5,13 @@
 
 void StartingTask(char taskNumber) {
     if (taskNumber == '1') {
-        printf("Not ready");
+        HalfQsortTask();
     }
     if (taskNumber == '2') {
         printf("Not ready");
     }
     if (taskNumber == '3') {
-        Exponentiation();
+        ExponentiationTask();
     }
     if (taskNumber == '4') {
         printf("Not ready");

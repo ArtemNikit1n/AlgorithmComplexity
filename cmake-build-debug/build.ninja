@@ -49,35 +49,35 @@ cmake_ninja_workdir = D$:/Development/Homeworks/AlgorithmComplexity/cmake-build-
 
 build cmake_object_order_depends_target_AlgorithmComplexity: phony || .
 
-build CMakeFiles/AlgorithmComplexity.dir/halfQsort.c.obj: C_COMPILER__AlgorithmComplexity_unscanned_Debug D$:/Development/Homeworks/AlgorithmComplexity/halfQsort.c || cmake_object_order_depends_target_AlgorithmComplexity
-  DEP_FILE = CMakeFiles\AlgorithmComplexity.dir\halfQsort.c.obj.d
+build CMakeFiles/AlgorithmComplexity.dir/Code/halfQsort.c.obj: C_COMPILER__AlgorithmComplexity_unscanned_Debug D$:/Development/Homeworks/AlgorithmComplexity/Code/halfQsort.c || cmake_object_order_depends_target_AlgorithmComplexity
+  DEP_FILE = CMakeFiles\AlgorithmComplexity.dir\Code\halfQsort.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\AlgorithmComplexity.dir
-  OBJECT_FILE_DIR = CMakeFiles\AlgorithmComplexity.dir
+  OBJECT_FILE_DIR = CMakeFiles\AlgorithmComplexity.dir\Code
 
-build CMakeFiles/AlgorithmComplexity.dir/main.c.obj: C_COMPILER__AlgorithmComplexity_unscanned_Debug D$:/Development/Homeworks/AlgorithmComplexity/main.c || cmake_object_order_depends_target_AlgorithmComplexity
-  DEP_FILE = CMakeFiles\AlgorithmComplexity.dir\main.c.obj.d
+build CMakeFiles/AlgorithmComplexity.dir/Code/main.c.obj: C_COMPILER__AlgorithmComplexity_unscanned_Debug D$:/Development/Homeworks/AlgorithmComplexity/Code/main.c || cmake_object_order_depends_target_AlgorithmComplexity
+  DEP_FILE = CMakeFiles\AlgorithmComplexity.dir\Code\main.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\AlgorithmComplexity.dir
-  OBJECT_FILE_DIR = CMakeFiles\AlgorithmComplexity.dir
+  OBJECT_FILE_DIR = CMakeFiles\AlgorithmComplexity.dir\Code
 
-build CMakeFiles/AlgorithmComplexity.dir/bubbleAndCounting.c.obj: C_COMPILER__AlgorithmComplexity_unscanned_Debug D$:/Development/Homeworks/AlgorithmComplexity/bubbleAndCounting.c || cmake_object_order_depends_target_AlgorithmComplexity
-  DEP_FILE = CMakeFiles\AlgorithmComplexity.dir\bubbleAndCounting.c.obj.d
+build CMakeFiles/AlgorithmComplexity.dir/Code/bubbleAndCounting.c.obj: C_COMPILER__AlgorithmComplexity_unscanned_Debug D$:/Development/Homeworks/AlgorithmComplexity/Code/bubbleAndCounting.c || cmake_object_order_depends_target_AlgorithmComplexity
+  DEP_FILE = CMakeFiles\AlgorithmComplexity.dir\Code\bubbleAndCounting.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\AlgorithmComplexity.dir
-  OBJECT_FILE_DIR = CMakeFiles\AlgorithmComplexity.dir
+  OBJECT_FILE_DIR = CMakeFiles\AlgorithmComplexity.dir\Code
 
-build CMakeFiles/AlgorithmComplexity.dir/exponentiation.c.obj: C_COMPILER__AlgorithmComplexity_unscanned_Debug D$:/Development/Homeworks/AlgorithmComplexity/exponentiation.c || cmake_object_order_depends_target_AlgorithmComplexity
-  DEP_FILE = CMakeFiles\AlgorithmComplexity.dir\exponentiation.c.obj.d
+build CMakeFiles/AlgorithmComplexity.dir/Code/exponentiation.c.obj: C_COMPILER__AlgorithmComplexity_unscanned_Debug D$:/Development/Homeworks/AlgorithmComplexity/Code/exponentiation.c || cmake_object_order_depends_target_AlgorithmComplexity
+  DEP_FILE = CMakeFiles\AlgorithmComplexity.dir\Code\exponentiation.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\AlgorithmComplexity.dir
-  OBJECT_FILE_DIR = CMakeFiles\AlgorithmComplexity.dir
+  OBJECT_FILE_DIR = CMakeFiles\AlgorithmComplexity.dir\Code
 
-build CMakeFiles/AlgorithmComplexity.dir/fibonacciNumbers.c.obj: C_COMPILER__AlgorithmComplexity_unscanned_Debug D$:/Development/Homeworks/AlgorithmComplexity/fibonacciNumbers.c || cmake_object_order_depends_target_AlgorithmComplexity
-  DEP_FILE = CMakeFiles\AlgorithmComplexity.dir\fibonacciNumbers.c.obj.d
+build CMakeFiles/AlgorithmComplexity.dir/Code/fibonacciNumbers.c.obj: C_COMPILER__AlgorithmComplexity_unscanned_Debug D$:/Development/Homeworks/AlgorithmComplexity/Code/fibonacciNumbers.c || cmake_object_order_depends_target_AlgorithmComplexity
+  DEP_FILE = CMakeFiles\AlgorithmComplexity.dir\Code\fibonacciNumbers.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\AlgorithmComplexity.dir
-  OBJECT_FILE_DIR = CMakeFiles\AlgorithmComplexity.dir
+  OBJECT_FILE_DIR = CMakeFiles\AlgorithmComplexity.dir\Code
 
 
 # =============================================================================
@@ -87,7 +87,7 @@ build CMakeFiles/AlgorithmComplexity.dir/fibonacciNumbers.c.obj: C_COMPILER__Alg
 #############################################
 # Link the executable AlgorithmComplexity.exe
 
-build AlgorithmComplexity.exe: C_EXECUTABLE_LINKER__AlgorithmComplexity_Debug CMakeFiles/AlgorithmComplexity.dir/halfQsort.c.obj CMakeFiles/AlgorithmComplexity.dir/main.c.obj CMakeFiles/AlgorithmComplexity.dir/bubbleAndCounting.c.obj CMakeFiles/AlgorithmComplexity.dir/exponentiation.c.obj CMakeFiles/AlgorithmComplexity.dir/fibonacciNumbers.c.obj
+build AlgorithmComplexity.exe: C_EXECUTABLE_LINKER__AlgorithmComplexity_Debug CMakeFiles/AlgorithmComplexity.dir/Code/halfQsort.c.obj CMakeFiles/AlgorithmComplexity.dir/Code/main.c.obj CMakeFiles/AlgorithmComplexity.dir/Code/bubbleAndCounting.c.obj CMakeFiles/AlgorithmComplexity.dir/Code/exponentiation.c.obj CMakeFiles/AlgorithmComplexity.dir/Code/fibonacciNumbers.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\AlgorithmComplexity.dir
