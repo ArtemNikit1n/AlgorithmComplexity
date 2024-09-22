@@ -16,21 +16,26 @@ void RealizationHalfQsort(int array[100], int arrayLength) {
         if (firstElement > array[i]) {
             Swap(&array[i - 1], &array[i]);
         } else {
+            if (array[i] == array[arrayLength - 1]) {
+                --arrayLength;
+                --i;
+                continue;
+            }
             Swap(&array[i], &array[arrayLength - 1]);
-            --i;
             --arrayLength;
+            --i;
         }
     }
 }
 
 bool TestInputCorrectnessForHalfQsort(int arrayLength) {
-    if (arrayLength > 0) {
+    if (arrayLength < 100 && arrayLength > 0) {
         return 0;
     }
     return 1;
 }
 
-bool TestCorrectSorting(int array[100], int firstElement, int arrayLength) {
+bool TestCorrectSorting(const int array[100], int firstElement, int arrayLength) {
     int i = 0;
     int indexFirstElement = -1;
     while (array[i] < arrayLength) {
@@ -69,10 +74,9 @@ void HalfQsortTask() {
 
     printf("Initial array:\n");
     for (int i = 0; i < arrayLength; ++i) {
-        arrayRand[i] = rand() % 10;
+        arrayRand[i] = rand();
         printf("%d ", arrayRand[i]);
     }
-    arrayRand[0] = 1;
 
     RealizationHalfQsort(arrayRand, arrayLength);
 
