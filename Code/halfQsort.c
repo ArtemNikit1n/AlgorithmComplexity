@@ -35,7 +35,7 @@ bool TestInputCorrectnessForHalfQsort(int arrayLength) {
     return 1;
 }
 
-bool TestCorrectSorting(const int array[100], int firstElement, int arrayLength) {
+bool TestCorrectSortingTask1(const int array[100], int firstElement, int arrayLength) {
     int i = 0;
     int indexFirstElement = -1;
     while (array[i] < arrayLength) {
@@ -80,7 +80,7 @@ void HalfQsortTask() {
 
     RealizationHalfQsort(arrayRand, arrayLength);
 
-    if (TestCorrectSorting(arrayRand, firstElement, arrayLength)) {
+    if (TestCorrectSortingTask1(arrayRand, firstElement, arrayLength)) {
         printf("Program error");
         return;
     }

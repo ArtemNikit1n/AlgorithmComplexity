@@ -57,5 +57,4 @@ void ExponentiationTask() {
         printf("Result for logarithm: %ld\n", ExponentiationLogTime(baseOfDegree, exponent));
         printf("Result for line: %ld\n", ExponentiationLineTime(baseOfDegree, exponent));
     }
-
 }

@@ -5,6 +5,10 @@
 
 void HalfQsortTask(); // 1
 
+void BubbleAndCountingTask(); // 2
+
 void ExponentiationTask(); // 3
 
 long ExponentiationLogTime(int baseOfDegree, int exponent);
+
+void Swap(int *first, int *second);

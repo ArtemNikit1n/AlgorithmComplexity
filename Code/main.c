@@ -8,7 +8,7 @@ void StartingTask(char taskNumber) {
         HalfQsortTask();
     }
     if (taskNumber == '2') {
-        printf("Not ready");
+        BubbleAndCountingTask();
     }
     if (taskNumber == '3') {
         ExponentiationTask();
