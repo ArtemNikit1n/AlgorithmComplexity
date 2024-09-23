@@ -76,7 +76,7 @@ void BubbleAndCountingTask() {
         printf("Program error");
         return;
     }
-    double timeSpentBubbleSorting = (double)(endBubbleSort - startBubbleSort);
+    double timeSpentBubbleSorting = (double)(endBubbleSort - startBubbleSort) / CLOCKS_PER_SEC;
 
     free(arrayForBubble);
     int *arrayForCounting = malloc(arrayLength * sizeof(int));
@@ -89,9 +89,9 @@ void BubbleAndCountingTask() {
     clock_t startCountingSort = clock();
     CountingSort(arrayForCounting, arrayLength);
     clock_t endCountingSort = clock();
-    double timeSpentCountingSort = (double)(endCountingSort - startCountingSort);
+    double timeSpentCountingSort = (double)(endCountingSort - startCountingSort) / CLOCKS_PER_SEC;
 
     free(arrayForCounting);
-    printf("\nTime taken for bubble sorting: %f", timeSpentBubbleSorting);
-    printf("\nTime taken for counting sorting: %f\n", timeSpentCountingSort);
+    printf("Time taken for bubble sorting: %f seconds", timeSpentBubbleSorting);
+    printf("\nTime taken for counting sorting: %f seconds\n", timeSpentCountingSort);
 }

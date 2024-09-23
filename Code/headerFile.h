@@ -9,6 +9,8 @@ void BubbleAndCountingTask(); // 2
 
 void ExponentiationTask(); // 3
 
+void FibonacciNumbersTask(); // 4
+
 long ExponentiationLogTime(long baseOfDegree, long exponent);
 
 void Swap(int *first, int *second);

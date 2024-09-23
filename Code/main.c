@@ -14,7 +14,7 @@ void StartingTask(char taskNumber) {
         ExponentiationTask();
     }
     if (taskNumber == '4') {
-        printf("Not ready");
+        FibonacciNumbersTask();
     }
 }
 
@@ -32,7 +32,7 @@ bool TestInputCorrectnessForMain(const char *taskNumber) {
 int main() {
     char taskNumber = '0';
     printf("Enter the task number from 1 to 4:\n");
-    scanf("%[1234]", &taskNumber);
+    scanf("%[0123456789]", &taskNumber);
 
     if (TestInputCorrectnessForMain(&taskNumber)) {
         printf("Input error");
