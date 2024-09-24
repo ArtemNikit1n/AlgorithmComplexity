@@ -3,39 +3,42 @@
 #include <stdbool.h>
 #include <time.h>
 
-void Swap(int *first, int *second)
+void swap(int *first, int *second)
 {
+    if (*first == *second) {
+        return;
+    }
     *first ^= *second;
     *second ^= *first;
     *first ^= *second;
 }
 
-void RealizationHalfQsort(int array[100], int arrayLength) {
+void realizationHalfQsort(int array[100], int arrayLength) {
     int firstElement = array[0];
     for (int i = 1; i < arrayLength; ++i) {
         if (firstElement > array[i]) {
-            Swap(&array[i - 1], &array[i]);
+            swap(&array[i - 1], &array[i]);
         } else {
             if (array[i] == array[arrayLength - 1]) {
                 --arrayLength;
                 --i;
                 continue;
             }
-            Swap(&array[i], &array[arrayLength - 1]);
+            swap(&array[i], &array[arrayLength - 1]);
             --arrayLength;
             --i;
         }
     }
 }
 
-bool TestInputCorrectnessForHalfQsort(int arrayLength) {
+bool testInputCorrectnessForHalfQsort(int arrayLength) {
     if (arrayLength < 100 && arrayLength > 0) {
         return 0;
     }
     return 1;
 }
 
-bool TestCorrectSortingTask1(const int array[100], int firstElement, int arrayLength) {
+bool testCorrectSortingTask1(const int array[100], int firstElement, int arrayLength) {
     int i = 0;
     int indexFirstElement = -1;
     while (array[i] < arrayLength) {
@@ -57,7 +60,7 @@ bool TestCorrectSortingTask1(const int array[100], int firstElement, int arrayLe
     return 0;
 }
 
-void HalfQsortTask() {
+void halfQsortTask() {
     srand(time(NULL));
     int arrayLength = 0;
     int arrayRand[100];
@@ -65,7 +68,7 @@ void HalfQsortTask() {
     printf("Enter the number of elements in the array (<100):\n");
     scanf("%d", &arrayLength);
 
-    if (TestInputCorrectnessForHalfQsort(arrayLength)) {
+    if (testInputCorrectnessForHalfQsort(arrayLength)) {
         printf("Input error");
         return;
     }
@@ -78,9 +81,9 @@ void HalfQsortTask() {
         printf("%d ", arrayRand[i]);
     }
 
-    RealizationHalfQsort(arrayRand, arrayLength);
+    realizationHalfQsort(arrayRand, arrayLength);
 
-    if (TestCorrectSortingTask1(arrayRand, firstElement, arrayLength)) {
+    if (testCorrectSortingTask1(arrayRand, firstElement, arrayLength)) {
         printf("Program error");
         return;
     }

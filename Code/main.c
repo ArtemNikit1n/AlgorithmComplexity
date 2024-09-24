@@ -3,22 +3,22 @@
 #include <string.h>
 #include "headerFile.h"
 
-void StartingTask(char taskNumber) {
+void startingTask(char taskNumber) {
     if (taskNumber == '1') {
-        HalfQsortTask();
+        halfQsortTask();
     }
     if (taskNumber == '2') {
-        BubbleAndCountingTask();
+        bubbleAndCountingTask();
     }
     if (taskNumber == '3') {
-        ExponentiationTask();
+        exponentiationTask();
     }
     if (taskNumber == '4') {
-        FibonacciNumbersTask();
+        fibonacciNumbersTask();
     }
 }
 
-bool TestInputCorrectnessForMain(const char *taskNumber) {
+bool testInputCorrectnessForMain(const char *taskNumber) {
     size_t lengthTaskNumber = strlen(taskNumber);
     if (*taskNumber == '0') {
         return 1;
@@ -34,11 +34,11 @@ int main() {
     printf("Enter the task number from 1 to 4:\n");
     scanf("%[0123456789]", &taskNumber);
 
-    if (TestInputCorrectnessForMain(&taskNumber)) {
+    if (testInputCorrectnessForMain(&taskNumber)) {
         printf("Input error");
         return 1;
     }
 
-    StartingTask(taskNumber);
+    startingTask(taskNumber);
     return 0;
 }

@@ -4,26 +4,26 @@
 #include <stdlib.h>
 #include <string.h>
 
-long ExponentiationLineTime(long baseOfDegree, long exponent) {
+long exponentiationLineTime(long baseOfDegree, long exponent) {
     if (exponent == 0) {
         return 1;
     }
-    return baseOfDegree * ExponentiationLineTime(baseOfDegree, exponent - 1);
+    return baseOfDegree * exponentiationLineTime(baseOfDegree, exponent - 1);
 }
 
-long ExponentiationLogTime(long baseOfDegree, long exponent) {
+long exponentiationLogTime(long baseOfDegree, long exponent) {
     if (exponent == 0) {
         return 1;
     }
     if (exponent % 2 == 1) {
-        return ExponentiationLineTime(baseOfDegree, exponent - 1) * baseOfDegree;
+        return exponentiationLineTime(baseOfDegree, exponent - 1) * baseOfDegree;
     } else {
-        long forSquare = ExponentiationLogTime(baseOfDegree, exponent / 2);
+        long forSquare = exponentiationLogTime(baseOfDegree, exponent / 2);
         return forSquare * forSquare;
     }
 }
 
-bool TestInputCorrectness(const char *endptrBaseOfDegree, const char *endptrExponent, const long baseOfDegree) {
+bool testInputCorrectness(const char *endptrBaseOfDegree, const char *endptrExponent, const long baseOfDegree) {
     if (baseOfDegree < 0) {
         printf("The base of a degree cannot be negative\n");
         return 1;
@@ -35,7 +35,7 @@ bool TestInputCorrectness(const char *endptrBaseOfDegree, const char *endptrExpo
     return 0;
 }
 
-bool TestForCorrectnessOfCalculation(const double resultExponentiationLogTime, const double resultExponentiationLineTime) {
+bool testForCorrectnessOfCalculation(const double resultExponentiationLogTime, const double resultExponentiationLineTime) {
     if (resultExponentiationLineTime <= 0 || resultExponentiationLogTime <= 0) {
         printf("Values entered are too large");
         return 1;
@@ -43,7 +43,7 @@ bool TestForCorrectnessOfCalculation(const double resultExponentiationLogTime, c
     return 0;
 }
 
-void ExponentiationTask() {
+void exponentiationTask() {
     char strBaseOfDegree[40];
     char strExponent[40];
     char *endptrBaseOfDegree;
@@ -60,22 +60,22 @@ void ExponentiationTask() {
     scanf("%s", strExponent);
     exponent = strtol(strExponent, &endptrExponent, 10);
 
-    if (TestInputCorrectness(endptrBaseOfDegree, endptrExponent, baseOfDegree)) {
+    if (testInputCorrectness(endptrBaseOfDegree, endptrExponent, baseOfDegree)) {
         return;
     }
     if (exponent < 0) {
         exponent *= -1;
-        double resultExponentiationLogTime = 1 / (double)ExponentiationLogTime(baseOfDegree, exponent);
-        double resultExponentiationLineTime = 1 / (double)ExponentiationLineTime(baseOfDegree, exponent);
-        if (TestForCorrectnessOfCalculation(resultExponentiationLogTime, resultExponentiationLineTime)) {
+        double resultExponentiationLogTime = 1 / (double) exponentiationLogTime(baseOfDegree, exponent);
+        double resultExponentiationLineTime = 1 / (double) exponentiationLineTime(baseOfDegree, exponent);
+        if (testForCorrectnessOfCalculation(resultExponentiationLogTime, resultExponentiationLineTime)) {
             return;
         }
         printf("Result for logarithm: %f\n", resultExponentiationLogTime);
         printf("Result for line: %f\n", resultExponentiationLineTime);
     } else {
-        long resultExponentiationLogTime = ExponentiationLogTime(baseOfDegree, exponent);
-        long resultExponentiationLineTime = ExponentiationLineTime(baseOfDegree, exponent);
-        if (TestForCorrectnessOfCalculation((double)resultExponentiationLogTime, (double)resultExponentiationLineTime)) {
+        long resultExponentiationLogTime = exponentiationLogTime(baseOfDegree, exponent);
+        long resultExponentiationLineTime = exponentiationLineTime(baseOfDegree, exponent);
+        if (testForCorrectnessOfCalculation((double) resultExponentiationLogTime, (double) resultExponentiationLineTime)) {
             return;
         }
         printf("Result for logarithm: %ld\n", resultExponentiationLogTime);

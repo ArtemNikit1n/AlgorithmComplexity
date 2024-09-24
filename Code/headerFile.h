@@ -3,14 +3,14 @@
 
 #endif //ALGORITHMCOMPLEXITY_HEADER_H
 
-void HalfQsortTask(); // 1
+void halfQsortTask(); // 1
 
-void BubbleAndCountingTask(); // 2
+void bubbleAndCountingTask(); // 2
 
-void ExponentiationTask(); // 3
+void exponentiationTask(); // 3
 
-void FibonacciNumbersTask(); // 4
+void fibonacciNumbersTask(); // 4
 
-long ExponentiationLogTime(long baseOfDegree, long exponent);
+long exponentiationLogTime(long baseOfDegree, long exponent);
 
-void Swap(int *first, int *second);
+void swap(int *first, int *second);

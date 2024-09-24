@@ -6,25 +6,25 @@
 
 #define RANGE_OF_VALUES 100
 
-void FillingAnArray(int array[], size_t arrayLength) {
+void fillingAnArray(int array[], size_t arrayLength) {
     srand(time(NULL));
     for (int i = 0; i < arrayLength; ++i) {
         array[i] = rand() % 100;
     }
 }
 
-void BubbleSort(int array[], size_t arrayLength) {
+void bubbleSort(int array[], size_t arrayLength) {
     while (arrayLength > 1) {
         for (int i = 0; i < arrayLength - 1; ++i) {
             if (array[i] > array[i + 1]) {
-                Swap(&array[i + 1], &array[i]);
+                swap(&array[i + 1], &array[i]);
             }
         }
         --arrayLength;
     }
 }
 
-void CountingSort(int array[], size_t arrayLength) {
+void countingSort(int array[], size_t arrayLength) {
     int j = 0;
     int arrayToCount[RANGE_OF_VALUES] = {0};
     for (int i = 0; i < arrayLength; ++i) {
@@ -41,7 +41,7 @@ void CountingSort(int array[], size_t arrayLength) {
     }
 }
 
-bool TestCorrectSortingTask2(const int array[], size_t arrayLength) {
+bool testCorrectSortingTask2(const int array[], size_t arrayLength) {
     for (int i = 0; i < arrayLength - 1; ++i) {
         if (array[i] > array[i + 1]) {
             return 1;
@@ -50,7 +50,7 @@ bool TestCorrectSortingTask2(const int array[], size_t arrayLength) {
     return 0;
 }
 
-bool TestForCorrectMemoryAllocation(const int array[]) {
+bool testForCorrectMemoryAllocation(const int array[]) {
     if (array == NULL) {
         printf("Memory allocation error\n");
         return 1;
@@ -58,21 +58,21 @@ bool TestForCorrectMemoryAllocation(const int array[]) {
     return 0;
 }
 
-void BubbleAndCountingTask() {
+void bubbleAndCountingTask() {
     size_t arrayLength = 10000;
 
     int *arrayForBubble = (int *)malloc(arrayLength * sizeof(int));
-    if (TestForCorrectMemoryAllocation(arrayForBubble)) {
+    if (testForCorrectMemoryAllocation(arrayForBubble)) {
         return;
     }
 
-    FillingAnArray(arrayForBubble, arrayLength);
+    fillingAnArray(arrayForBubble, arrayLength);
 
     clock_t startBubbleSort = clock();
-    BubbleSort(arrayForBubble, arrayLength);
+    bubbleSort(arrayForBubble, arrayLength);
     clock_t endBubbleSort = clock();
 
-    if (TestCorrectSortingTask2(arrayForBubble, arrayLength)) {
+    if (testCorrectSortingTask2(arrayForBubble, arrayLength)) {
         printf("Program error");
         return;
     }
@@ -80,14 +80,14 @@ void BubbleAndCountingTask() {
 
     free(arrayForBubble);
     int *arrayForCounting = malloc(arrayLength * sizeof(int));
-    if (TestForCorrectMemoryAllocation(arrayForCounting)) {
+    if (testForCorrectMemoryAllocation(arrayForCounting)) {
         return;
     }
 
-    FillingAnArray(arrayForCounting, arrayLength);
+    fillingAnArray(arrayForCounting, arrayLength);
 
     clock_t startCountingSort = clock();
-    CountingSort(arrayForCounting, arrayLength);
+    countingSort(arrayForCounting, arrayLength);
     clock_t endCountingSort = clock();
     double timeSpentCountingSort = (double)(endCountingSort - startCountingSort) / CLOCKS_PER_SEC;
 
