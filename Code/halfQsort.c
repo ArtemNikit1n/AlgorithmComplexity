@@ -13,7 +13,7 @@ void swap(int *first, int *second)
     *first ^= *second;
 }
 
-void realizationHalfQsort(int array[100], int arrayLength) {
+void realizationHalfQsort(int array[], int arrayLength) {
     int firstElement = array[0];
     for (int i = 1; i < arrayLength; ++i) {
         if (firstElement > array[i]) {
@@ -32,13 +32,10 @@ void realizationHalfQsort(int array[100], int arrayLength) {
 }
 
 bool testInputCorrectnessForHalfQsort(int arrayLength) {
-    if (arrayLength < 100 && arrayLength > 0) {
-        return 0;
-    }
-    return 1;
+    return (arrayLength < 100 && arrayLength > 0);
 }
 
-bool testCorrectSortingTask1(const int array[100], int firstElement, int arrayLength) {
+bool testCorrectSortingTask1(const int array[], int firstElement, int arrayLength) {
     int i = 0;
     int indexFirstElement = -1;
     while (array[i] < arrayLength) {
@@ -51,13 +48,13 @@ bool testCorrectSortingTask1(const int array[100], int firstElement, int arrayLe
 
     for (int j = 0; j < arrayLength; ++j) {
         if (j < indexFirstElement && array[j] > firstElement) {
-            return 1;
+            return true;
         }
         if (j > indexFirstElement && array[j] < firstElement) {
-            return 1;
+            return true;
         }
     }
-    return 0;
+    return false;
 }
 
 void halfQsortTask() {
@@ -68,7 +65,7 @@ void halfQsortTask() {
     printf("Enter the number of elements in the array (<100):\n");
     scanf("%d", &arrayLength);
 
-    if (testInputCorrectnessForHalfQsort(arrayLength)) {
+    if (!testInputCorrectnessForHalfQsort(arrayLength)) {
         printf("Input error");
         return;
     }

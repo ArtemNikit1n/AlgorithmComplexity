@@ -44,18 +44,14 @@ void countingSort(int array[], size_t arrayLength) {
 bool testCorrectSortingTask2(const int array[], size_t arrayLength) {
     for (int i = 0; i < arrayLength - 1; ++i) {
         if (array[i] > array[i + 1]) {
-            return 1;
+            return true;
         }
     }
-    return 0;
+    return false;
 }
 
 bool testForCorrectMemoryAllocation(const int array[]) {
-    if (array == NULL) {
-        printf("Memory allocation error\n");
-        return 1;
-    }
-    return 0;
+    return (array == NULL) ? true : false;
 }
 
 void bubbleAndCountingTask() {
@@ -81,6 +77,7 @@ void bubbleAndCountingTask() {
     free(arrayForBubble);
     int *arrayForCounting = malloc(arrayLength * sizeof(int));
     if (testForCorrectMemoryAllocation(arrayForCounting)) {
+        printf("Memory allocation error\n");
         return;
     }
 

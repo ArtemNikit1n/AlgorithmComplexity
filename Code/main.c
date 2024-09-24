@@ -20,13 +20,8 @@ void startingTask(char taskNumber) {
 
 bool testInputCorrectnessForMain(const char *taskNumber) {
     size_t lengthTaskNumber = strlen(taskNumber);
-    if (*taskNumber == '0') {
-        return 1;
-    }
-    if (strlen(taskNumber) > 1) {
-        return 1;
-    }
-    return 0;
+    return (*taskNumber == '0') ? true : false;
+    return (strlen(taskNumber) > 1) ? true : false;
 }
 
 int main() {

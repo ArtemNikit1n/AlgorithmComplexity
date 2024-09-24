@@ -21,11 +21,7 @@ void fibonaccIteratively(long long fibonacciNumbers[], int fibonacciIndex) {
 }
 
 bool testFibonacciInputCorrectness(const int fibonacciIndex, const char *endptrFibonacciIndex) {
-    if (fibonacciIndex < 0 || *endptrFibonacciIndex != '\0') {
-        printf("Input error\n");
-        return 0;
-    }
-    return 1;
+    return (fibonacciIndex < 0 || *endptrFibonacciIndex != '\0') ? true : false;
 }
 
 void fibonacciNumbersTask() {
@@ -38,7 +34,8 @@ void fibonacciNumbersTask() {
     printf("Enter how many times you want to calculate the fibonacci number:\n");
     scanf("%s", strFibonacciIndex);
     fibonacciIndex = (int)strtol(strFibonacciIndex, &endptrFibonacciIndex, 10);
-    if (!testFibonacciInputCorrectness(fibonacciIndex, endptrFibonacciIndex)) {
+    if (testFibonacciInputCorrectness(fibonacciIndex, endptrFibonacciIndex)) {
+        printf("Input error\n");
         return;
     }
 
