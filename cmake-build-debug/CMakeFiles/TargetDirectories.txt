@@ -1,3 +1,0 @@
-D:/Development/Homeworks/AlgorithmComplexity/cmake-build-debug/CMakeFiles/AlgorithmComplexity.dir
-D:/Development/Homeworks/AlgorithmComplexity/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Development/Homeworks/AlgorithmComplexity/cmake-build-debug/CMakeFiles/rebuild_cache.dir
