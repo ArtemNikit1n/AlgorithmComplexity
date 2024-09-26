@@ -11,6 +11,4 @@ void exponentiationTask(); // 3
 
 void fibonacciNumbersTask(); // 4
 
-long exponentiationLogTime(long baseOfDegree, long exponent);
-
 void swap(int *first, int *second);

@@ -2,6 +2,7 @@
 #include "stdlib.h"
 #include <stdbool.h>
 #include <time.h>
+#include <assert.h>
 
 void swap(int *first, int *second)
 {
@@ -29,10 +30,6 @@ void realizationHalfQsort(int array[], int arrayLength) {
             --i;
         }
     }
-}
-
-bool testInputCorrectnessForHalfQsort(int arrayLength) {
-    return (arrayLength < 100 && arrayLength > 0);
 }
 
 bool testCorrectSortingTask1(const int array[], int firstElement, int arrayLength) {
@@ -64,11 +61,7 @@ void halfQsortTask() {
 
     printf("Enter the number of elements in the array (<100):\n");
     scanf("%d", &arrayLength);
-
-    if (!testInputCorrectnessForHalfQsort(arrayLength)) {
-        printf("Input error");
-        return;
-    }
+    assert(arrayLength < 100 && arrayLength > 0);
 
     int firstElement = arrayRand[0];
 

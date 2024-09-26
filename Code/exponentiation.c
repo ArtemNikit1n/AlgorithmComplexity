@@ -3,40 +3,69 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
-long exponentiationLineTime(long baseOfDegree, long exponent) {
-    if (exponent == 0) {
-        return 1;
+long double exponentiationLineTime(long long baseOfDegree, long exponent) {
+    long long result = 1;
+    bool negativeDegree = false;
+    if (exponent < 0) {
+        exponent *= -1;
+        negativeDegree = true;
     }
-    return baseOfDegree * exponentiationLineTime(baseOfDegree, exponent - 1);
+
+    if (exponent == 0) {
+        return result;
+    }
+    for (int i = 0; i < exponent; i++) {
+        result *= baseOfDegree;
+    }
+    return negativeDegree ? 1 / result : result;
 }
 
-long exponentiationLogTime(long baseOfDegree, long exponent) {
+long double exponentiationLogTime(long long baseOfDegree, long exponent) {
+    long long result = 1;
+    bool negativeDegree = false;
+    if (exponent < 0) {
+        exponent *= -1;
+        negativeDegree = true;
+    }
+
     if (exponent == 0) {
-        return 1;
+        return result;
     }
-    if (exponent % 2 == 1) {
-        return exponentiationLineTime(baseOfDegree, exponent - 1) * baseOfDegree;
-    } else {
-        long forSquare = exponentiationLogTime(baseOfDegree, exponent / 2);
-        return forSquare * forSquare;
+    while (exponent > 0) {
+        if (exponent % 2 == 1) {
+            result *= baseOfDegree;
+        }
+        exponent /= 2;
+        baseOfDegree *= baseOfDegree;
     }
+
+    return negativeDegree ? 1 / result : result;
 }
 
 bool testInputCorrectness(const char *endptrBaseOfDegree, const char *endptrExponent, const long baseOfDegree) {
     if (baseOfDegree < 0) {
         printf("The base of a degree cannot be negative\n");
-        return true;
+        return false;
     }
     if (*endptrBaseOfDegree != '\0' || *endptrExponent != '\0') {
         printf("Input error\n");
-        return true;
+        return false;
     }
-    return false;
+    return true;
 }
 
-bool testForCorrectnessOfCalculation(const double resultExponentiationLogTime, const double resultExponentiationLineTime) {
-    return (resultExponentiationLineTime <= 0 || resultExponentiationLogTime <= 0) ? true : false;
+bool testForCorrectnessOfCalculation() {
+    const double epsilon = 0.000001;
+    bool test1LineTime = exponentiationLineTime(5, 2) == 25;
+    bool test2LineTime = exponentiationLineTime(50, 10) == 97656250000000000;
+    bool test3LineTime = 0.000010 - epsilon < exponentiationLineTime(10, -5) < 0.000010 + epsilon;
+
+    bool test1LogTime = exponentiationLogTime(5, 2) == 25;
+    bool test2LogTime = exponentiationLogTime(50, 10) == 97656250000000000;
+    bool test3LogTime = 0.000010 - epsilon < exponentiationLogTime(10, -5) < 0.000010 + epsilon;
+    return (test1LineTime && test2LineTime && test3LineTime && test1LogTime && test2LogTime && test3LogTime);
 }
 
 void exponentiationTask() {
@@ -46,7 +75,12 @@ void exponentiationTask() {
     char *endptrExponent;
 
     long exponent = -1;
-    long baseOfDegree = -1;
+    long long baseOfDegree = -1;
+
+    if (!testForCorrectnessOfCalculation()) {
+        printf("Tests failed");
+        return;
+    }
 
     printf("Enter the base of the degree: ");
     scanf("%s", strBaseOfDegree);
@@ -56,27 +90,14 @@ void exponentiationTask() {
     scanf("%s", strExponent);
     exponent = strtol(strExponent, &endptrExponent, 10);
 
-    if (testInputCorrectness(endptrBaseOfDegree, endptrExponent, baseOfDegree)) {
+    if (!testInputCorrectness(endptrBaseOfDegree, endptrExponent, baseOfDegree)) {
         return;
     }
-    if (exponent < 0) {
-        exponent *= -1;
-        double resultExponentiationLogTime = 1 / (double) exponentiationLogTime(baseOfDegree, exponent);
-        double resultExponentiationLineTime = 1 / (double) exponentiationLineTime(baseOfDegree, exponent);
-        if (testForCorrectnessOfCalculation(resultExponentiationLogTime, resultExponentiationLineTime)) {
-            printf("Values entered are too large");
-            return;
-        }
-        printf("Result for logarithm: %f\n", resultExponentiationLogTime);
-        printf("Result for line: %f\n", resultExponentiationLineTime);
-    } else {
-        long resultExponentiationLogTime = exponentiationLogTime(baseOfDegree, exponent);
-        long resultExponentiationLineTime = exponentiationLineTime(baseOfDegree, exponent);
-        if (testForCorrectnessOfCalculation((double) resultExponentiationLogTime, (double) resultExponentiationLineTime)) {
-            printf("Values entered are too large");
-            return;
-        }
-        printf("Result for logarithm: %ld\n", resultExponentiationLogTime);
-        printf("Result for line: %ld\n", resultExponentiationLineTime);
-    }
+
+    long double resultExponentiationLogTime = exponentiationLogTime(baseOfDegree, exponent);
+    long double resultExponentiationLineTime = exponentiationLineTime(baseOfDegree, exponent);
+    assert(resultExponentiationLineTime > 0 && resultExponentiationLogTime > 0);
+
+    printf("Result for logarithm: %Lf\n", resultExponentiationLogTime);
+    printf("Result for line: %Lf\n", resultExponentiationLineTime);
 }
