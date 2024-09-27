@@ -6,7 +6,7 @@
 #include <assert.h>
 
 long double exponentiationLineTime(long long baseOfDegree, long exponent) {
-    long long result = 1;
+    long double result = 1;
     bool negativeDegree = false;
     if (exponent < 0) {
         exponent *= -1;
@@ -19,11 +19,11 @@ long double exponentiationLineTime(long long baseOfDegree, long exponent) {
     for (int i = 0; i < exponent; i++) {
         result *= baseOfDegree;
     }
-    return negativeDegree ? 1 / result : result;
+    return negativeDegree ? (1.0 / result) : result;
 }
 
 long double exponentiationLogTime(long long baseOfDegree, long exponent) {
-    long long result = 1;
+    long double result = 1;
     bool negativeDegree = false;
     if (exponent < 0) {
         exponent *= -1;
@@ -41,10 +41,10 @@ long double exponentiationLogTime(long long baseOfDegree, long exponent) {
         baseOfDegree *= baseOfDegree;
     }
 
-    return negativeDegree ? 1 / result : result;
+    return negativeDegree ? 1.0 / result : result;
 }
 
-bool testInputCorrectness(const char *endptrBaseOfDegree, const char *endptrExponent, const long baseOfDegree) {
+bool testInputCorrectness(const char *endptrBaseOfDegree, const char *endptrExponent, const long long baseOfDegree) {
     if (baseOfDegree < 0) {
         printf("The base of a degree cannot be negative\n");
         return false;
@@ -60,12 +60,15 @@ bool testForCorrectnessOfCalculation() {
     const double epsilon = 0.000001;
     bool test1LineTime = exponentiationLineTime(5, 2) == 25;
     bool test2LineTime = exponentiationLineTime(50, 10) == 97656250000000000;
-    bool test3LineTime = 0.000010 - epsilon < exponentiationLineTime(10, -5) < 0.000010 + epsilon;
+    bool test3LineTime = 0.000010 - epsilon < exponentiationLineTime(10, -5);
+    bool test4LineTime = 0.000010 + epsilon > exponentiationLineTime(10, -5);
 
     bool test1LogTime = exponentiationLogTime(5, 2) == 25;
     bool test2LogTime = exponentiationLogTime(50, 10) == 97656250000000000;
-    bool test3LogTime = 0.000010 - epsilon < exponentiationLogTime(10, -5) < 0.000010 + epsilon;
-    return (test1LineTime && test2LineTime && test3LineTime && test1LogTime && test2LogTime && test3LogTime);
+    bool test3LogTime = 0.000010 - epsilon < exponentiationLogTime(10, -5);
+    bool test4LogTime = 0.000010 + epsilon > exponentiationLogTime(10, -5);
+
+    return (test1LineTime && test2LineTime && test3LineTime && test4LineTime && test1LogTime && test2LogTime && test3LogTime && test4LogTime);
 }
 
 void exponentiationTask() {
