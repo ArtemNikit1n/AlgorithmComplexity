@@ -7,14 +7,17 @@ void startingTask(char taskNumber) {
     if (taskNumber == '1') {
         halfQsortTask();
     }
-    if (taskNumber == '2') {
+    else if (taskNumber == '2') {
         bubbleAndCountingTask();
     }
-    if (taskNumber == '3') {
+    else if (taskNumber == '3') {
         exponentiationTask();
     }
-    if (taskNumber == '4') {
+    else if (taskNumber == '4') {
         fibonacciNumbersTask();
+    } else {
+        printf("Input error");
+        return;
     }
 }
 
