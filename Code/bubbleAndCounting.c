@@ -41,13 +41,26 @@ void countingSort(int array[], size_t arrayLength) {
     }
 }
 
-bool testCorrectSortingTask2(const int array[], size_t arrayLength) {
-    for (int i = 0; i < arrayLength - 1; ++i) {
-        if (array[i] > array[i + 1]) {
-            return true;
+bool testBubbleSort() {
+    int testArray[20] = {20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    bubbleSort(testArray, 20);
+    for (int i = 0; i < 19; ++i) {
+        if (testArray[i] > testArray[i + 1]) {
+            return false;
         }
     }
-    return false;
+    return true;
+}
+
+bool testCountingSort() {
+    int testArray[20] = {20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    countingSort(testArray, 20);
+    for (int i = 0; i < 19; ++i) {
+        if (testArray[i] > testArray[i + 1]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 bool testForCorrectMemoryAllocation(const int array[]) {
@@ -55,10 +68,21 @@ bool testForCorrectMemoryAllocation(const int array[]) {
 }
 
 void bubbleAndCountingTask() {
-    size_t arrayLength = 10000;
+    if (!testBubbleSort()) {
+        printf("Bubble sort crash");
+        return;
+    }
 
+    if (!testCountingSort()) {
+        printf("Counting sort crash");
+        return;
+    }
+
+    size_t arrayLength = 10000;
     int *arrayForBubble = (int *)malloc(arrayLength * sizeof(int));
+
     if (testForCorrectMemoryAllocation(arrayForBubble)) {
+        printf("Memory allocation error\n");
         return;
     }
 
@@ -68,10 +92,6 @@ void bubbleAndCountingTask() {
     bubbleSort(arrayForBubble, arrayLength);
     clock_t endBubbleSort = clock();
 
-    if (testCorrectSortingTask2(arrayForBubble, arrayLength)) {
-        printf("Program error");
-        return;
-    }
     double timeSpentBubbleSorting = (double)(endBubbleSort - startBubbleSort) / CLOCKS_PER_SEC;
 
     free(arrayForBubble);
