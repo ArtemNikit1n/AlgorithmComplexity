@@ -14,47 +14,44 @@ void swap(int *first, int *second)
     *first ^= *second;
 }
 
-void realizationHalfQsort(int array[], int arrayLength) {
-    int firstElement = array[0];
-    for (int i = 1; i < arrayLength; ++i) {
-        if (firstElement > array[i]) {
-            swap(&array[i - 1], &array[i]);
-        } else {
-            if (array[i] == array[arrayLength - 1]) {
-                --arrayLength;
-                --i;
-                continue;
-            }
-            swap(&array[i], &array[arrayLength - 1]);
-            --arrayLength;
-            --i;
+int halfQSort(int array[], int startArray, int endArray) {
+    int supportingElement = array[startArray];
+    int leftPart = startArray + 1;
+
+    for (int rightPart = startArray + 1; rightPart <= endArray; ++rightPart) {
+        if (array[rightPart] < supportingElement) {
+            swap(&array[leftPart], &array[rightPart]);
+            ++leftPart;
         }
     }
+    swap(&array[startArray], &array[leftPart - 1]);
+    return leftPart - 1;
 }
 
-bool testCorrectSortingTask1(const int array[], int firstElement, int arrayLength) {
+bool testCorrectSortingTask1() {
+    int testArray[20] = {10, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    int firstElement = testArray[0];
+    const int arrayLength = 20;
     int i = 0;
-    int indexFirstElement = -1;
-    while (array[i] < arrayLength) {
-        if (array[i] == firstElement) {
-            indexFirstElement == i;
-            break;
-        }
-        ++i;
-    }
+    int indexFirstElement = halfQSort(testArray, 0, arrayLength - 1);
 
     for (int j = 0; j < arrayLength; ++j) {
-        if (j < indexFirstElement && array[j] > firstElement) {
-            return true;
+        if (j < indexFirstElement && testArray[j] > firstElement) {
+            return false;
         }
-        if (j > indexFirstElement && array[j] < firstElement) {
-            return true;
+        if (j > indexFirstElement && testArray[j] < firstElement) {
+            return false;
         }
     }
-    return false;
+    return true;
 }
 
 void halfQsortTask() {
+    if (!testCorrectSortingTask1()) {
+        printf("Test failed");
+        return;
+    }
+
     srand(time(NULL));
     int arrayLength = 0;
     int arrayRand[100];
@@ -71,12 +68,7 @@ void halfQsortTask() {
         printf("%d ", arrayRand[i]);
     }
 
-    realizationHalfQsort(arrayRand, arrayLength);
-
-    if (testCorrectSortingTask1(arrayRand, firstElement, arrayLength)) {
-        printf("Program error");
-        return;
-    }
+    halfQSort(arrayRand, 0, arrayLength - 1);
 
     printf("\nResult:\n");
     for (int i = 0; i < arrayLength; ++i) {
